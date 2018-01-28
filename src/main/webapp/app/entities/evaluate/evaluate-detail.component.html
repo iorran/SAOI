@@ -1,0 +1,38 @@
+
+<div *ngIf="evaluate">
+    <h2><span>Evaluate</span> {{evaluate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>User</span></dt>
+        <dd>
+            {{evaluate.user?.firstName}}
+        </dd>
+        <dt><span>Evaluate Template</span></dt>
+        <dd>
+            <div *ngIf="evaluate.evaluateTemplate">
+                <a [routerLink]="['/evaluate-template', evaluate.evaluateTemplate?.id]">{{evaluate.evaluateTemplate?.description}}</a>
+            </div>
+        </dd>
+        <dt><span>Turma</span></dt>
+        <dd>
+            <div *ngIf="evaluate.turma">
+                <a [routerLink]="['/clazz', evaluate.turma?.id]">{{evaluate.turma?.code}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'evaluate/'+ evaluate.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

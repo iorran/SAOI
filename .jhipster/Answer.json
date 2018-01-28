@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "question",
+            "otherEntityName": "questionTemplate",
+            "otherEntityField": "description"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "answer",
+            "fieldType": "AnswerType",
+            "fieldValues": "CT,C,NCND,D,DT,NA"
+        }
+    ],
+    "changelogDate": "20180128234659",
+    "entityTableName": "answer",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

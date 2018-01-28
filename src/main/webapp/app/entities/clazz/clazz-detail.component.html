@@ -1,0 +1,46 @@
+
+<div *ngIf="clazz">
+    <h2><span>Clazz</span> {{clazz.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Code</span></dt>
+        <dd>
+            <span>{{clazz.code}}</span>
+        </dd>
+        <dt><span>Start</span></dt>
+        <dd>
+            <span>{{clazz.start | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>End</span></dt>
+        <dd>
+            <span>{{clazz.end | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Modulo</span></dt>
+        <dd>
+            <div *ngIf="clazz.modulo">
+                <a [routerLink]="['/module', clazz.modulo?.id]">{{clazz.modulo?.description}}</a>
+            </div>
+        </dd>
+        <dt><span>Students</span></dt>
+        <dd>
+            <span *ngFor="let students of clazz.students; let last = last">
+                {{students.firstName}}{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'clazz/'+ clazz.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

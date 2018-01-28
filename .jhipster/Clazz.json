@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "modulo",
+            "otherEntityName": "module",
+            "otherEntityField": "description"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "students",
+            "otherEntityName": "user",
+            "otherEntityField": "firstName",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "start",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "end",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180128234700",
+    "entityTableName": "clazz",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

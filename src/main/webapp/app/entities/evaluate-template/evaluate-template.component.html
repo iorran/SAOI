@@ -1,0 +1,64 @@
+<div>
+    <h2>
+        <span>Evaluate Templates</span>
+        <button class="btn btn-primary float-right jh-create-entity create-evaluate-template" [routerLink]="['/', { outlets: { popup: ['evaluate-template-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Evaluate Template
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="evaluateTemplates">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Description</span></th>
+            <th><span>Questions</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let evaluateTemplate of evaluateTemplates ;trackBy: trackId">
+                <td><a [routerLink]="['../evaluate-template', evaluateTemplate.id ]">{{evaluateTemplate.id}}</a></td>
+                <td>{{evaluateTemplate.description}}</td>
+                <td>
+                    <span *ngFor="let questions of evaluateTemplate.questions; let last = last">
+                            <a class="form-control-static" [routerLink]="['../question-template', questions?.id ]">{{questions.description}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../evaluate-template', evaluateTemplate.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'evaluate-template/'+ evaluateTemplate.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'evaluate-template/'+ evaluateTemplate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
