@@ -42,6 +42,15 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.QuestionTemplate.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.EvaluateTemplate.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.EvaluateTemplate.class.getName() + ".questions", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Evaluate.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Answer.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Clazz.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Clazz.class.getName() + ".students", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Course.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Module.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
