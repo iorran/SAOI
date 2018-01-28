@@ -1,0 +1,50 @@
+entity QuestionTemplate {
+	description String
+} 
+
+entity EvaluateTemplate {
+	description String
+} 
+
+relationship ManyToMany {
+	EvaluateTemplate{questions(description)} to QuestionTemplate,
+	Clazz{students(firstName)} to User
+}
+
+//-------------------------------------------------------------------
+
+entity Evaluate 
+
+entity Answer {
+	answer AnswerType
+} 
+ 
+enum AnswerType {
+	CT, C, NCND, D, DT, NA
+}
+
+entity Clazz {
+	code String,
+    start LocalDate,
+    end LocalDate,
+}  
+
+entity Course {
+	description String,
+}  
+
+entity Module {
+	description String,
+}  
+
+relationship ManyToOne {
+	Evaluate{user(firstName)} to User,
+	Evaluate{evaluateTemplate(description)} to EvaluateTemplate,
+	Evaluate{turma(code)} to Clazz,
+	Clazz{modulo(description)} to Module,
+	Module{course(description)} to Course,
+    Answer{question(description)} to QuestionTemplate
+}
+
+//-------------------------------------------------------------------
+
