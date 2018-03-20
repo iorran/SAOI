@@ -1,0 +1,45 @@
+entity Application {
+	name String
+}
+
+entity Role {
+	name String,
+	description String
+} 
+
+entity UseCase {
+	name String,
+	description String
+} 
+
+entity Permission {
+	value Access, 
+}
+
+entity Information {
+	name String,
+	description String
+}
+
+entity InformationValue {
+	value String
+} 
+
+entity User {
+	registration String,
+	key String
+} 
+
+enum Access {
+	CREATE, READ, UPDATE, DELETE
+}
+
+relationship ManyToOne {
+	Role{application(name)} to Application,
+	UseCase{role(name)} to Role,
+	Permission{useCase(name)} to UseCase,
+	Information{role(name)} to Role,
+	InformationValue{information(name)} to Information,
+	User{role(name)} to Role
+}
+
